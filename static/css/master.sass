@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap')
+*
+  box-sizeng: border-box
+
+$red: #FF0000
+
+
+@mixin _1440
+  @media (max-width: 1440px)
+    @content
+
+
+@mixin _1200
+  @media (max-width: 1200px)
+    @content
+
+@mixin _480
+  @media (max-width: 480px)
+    @content
+
+@mixin _979
+  @media (max-width: 979px)
+    @content
+
+
+@mixin _768
+  @media (max-width: 768px)
+    @content
+
+
+@mixin _600
+  @media (max-width: 600px)
+    @content
+
+@mixin _375
+  @media (max-width: 375px)
+    @content
+
+@mixin _350
+  @media (max-width: 350px)
+    @content
+
+@mixin _320
+  @media (max-width: 320px)
+    @content
+
+html, body
+  width: 100vw
+  display: grid
+  justify-items: center
+  max-width: 100vw
+  box-sizing: border-box
+  font-family: Montserrat
+  margin: 0
+  padding: 0
+  background: #000
+  color: white
+  overflow-x: hidden
+
+  &.fixed
+    overflow: hidden
+
+container
+  width: 80vw
+  overflow-x: hidden
+  padding: 30px 0 0
+  @include _1440
+    width: 90vw
+    padding: 30px 0 0
+  @include _1200
+  @include _480
+    margin-top: 50px
+
+
+a, p, span, div
+  text-decoration: none
+  font-weight: 600
+  font-size: 16px
+  line-height: 22px
+
+header, footer
+  display: grid
+  grid-template-columns: 200px 1fr
+  align-items: center
+  @include _1440
+    grid-template-columns: 101px 1fr
+  @include _1200
+    grid-template-columns: 20px 1fr
+  svg
+    @include _480
+      max-width: 50px
+      margin-left: 15px
+  span
+    font-family: Roboto Mono
+    font-size: 18px
+    @include _1200
+      font-size: 15px
+
+  nav
+    justify-self: end
+    @include _979
+      display: none
+
+    a
+      text-decoration: none
+      color: white
+      font-weight: 600
+      font-size: 15px
+      line-height: 17px
+      margin-left: 25px
+
+      &.active
+
+      @include _1440
+        margin-left: 10px
+        font-size: 13px
+//color: yellow
+
+header
+  @include _480
+    position: fixed
+    top: 0
+    right: 0
+    width: 100%
+    background: #000
+    padding: 0
+    z-index: 99
+#navigation
+  @include _979
+    box-sizing: border-box
+    display: grid
+    position: fixed
+    top: 0
+    width: 300px
+    right: -300px
+    transition: .3s
+    height: 100vh
+    padding: calc(50vh - 35%) 30px 30px
+    align-content: start
+    background: rgba(black, .9)
+    z-index: 100
+    @include _480
+      width: 100vw
+      right: -100%
+      padding: calc(50vh - 40%) 30px 30px
+      a
+        font-size: 18px
+        margin: 5px 0 5px 20px
+    &.open
+      right: 0
+      @include _480
+        right: 0
+    a
+      padding: 15px 0
+
+
+section.main-page-screen
+  display: grid
+  align-items: center
+  grid-template-columns: 1fr 1fr
+  padding: 50px 0
+  grid-gap: 50px
+
+  .info-block
+    svg
+      transform: translateY(70px) translateX(50px)
+      width: 80%
+      @include _768
+        transform: translateY(30px) translateX(20px)
+
+    h1
+      font-weight: bold
+      font-size: 64px
+      word-break: keep-all
+      white-space: nowrap
+      line-height: 70px
+      @include _768
+        font-size: 50px
+        line-height: 55px
+        text-align: center
+      @include _600
+
+        font-size: 36px
+        line-height: 38px
+        text-align: center
+        word-break: normal
+        white-space: normal
+        @include _375
+          font-size: 28px
+          line-height: 30px
+
+    button
+      background: $red
+      font-weight: 600
+      font-size: 36px
+      line-height: 44px
+      color: white
+      text-decoration: none
+      border: none
+      padding: 6px 13px
+      cursor: pointer
+      transition: .3s
+      @include _480
+        font-size: 28px
+        line-height: 32px
+        text-align: center
+        align-self: center
+        width: 60%
+        justify-self: center
+        display: inline-block
+        margin: 20%
+
+      &:active
+        background: darken($red, 10)
+        color: darken(white, 10)
+
+      &:focus
+        outline: none
+
+  @include _979
+    grid-template-columns: 1fr
+
+
+  img
+    justify-self: end
+    max-height: 70vh
+    @include _1440
+      width: 100%
+      max-height: 100%
+    @include _979
+      display: none
+
+.channels
+  margin: 60px 0
+  display: grid
+  grid-template-columns: repeat(8, 1fr)
+  grid-gap: 70px
+  justify-items: center
+  align-items: center
+  @include _1200
+    grid-gap: 30px
+  @include _768
+    grid-gap: 80px
+    grid-template-columns: repeat(4, 1fr)
+  @include _600
+    grid-gap: 50px
+  @include _480
+    grid-template-columns: repeat(2, 1fr)
+    grid-gap: 60px
+
+  img
+    max-width: 100%
+
+footer
+  padding-bottom: 65px
+  @include _1440
+    padding-bottom: 30px
+$dark: red
+$light: #000
+$color: red
+
+@mixin btn($right, $top)
+  display: none
+  @include _979
+    display: block
+    position: fixed
+    width: 60px
+    height: 60px
+    top: $top
+    background: #000
+
+    right: $right
+    transition-duration: 0.5s
+    user-focus-pointer: none
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    z-index: 110
+
+@mixin icon($height, $width)
+  transition-duration: 0.5s
+  position: absolute
+  height: $height
+  width: $width
+  top: 30px
+  background-color: $dark
+
+
+@mixin icon-before($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: $dark
+  content: ""
+  top: $top
+
+
+@mixin icon-after($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: $dark
+  content: ""
+  top: $top
+
+
+@mixin icon-circle($height, $width)
+  transition-duration: 0.5s
+  position: absolute
+  height: $height
+  width: $width
+  top: 2px
+  border-radius: 100%
+  background: transparent
+  border: 4px solid black
+  left: -15px
+
+
+.btn12
+  @include btn(10px, 40px)
+  @include _480
+    @include btn(0px, 20px)
+  @include _375
+    @include btn(-10px, 20px)
+  @include _320
+    @include btn(-10px, 20px)
+
+  .icon
+    @include icon(4px, 30px)
+
+    &:before
+      @include icon-before(4px, 30px, -10px)
+
+    &:after
+      @include icon-after(4px, 30px, 10px)
+
+  &.open
+    .icon
+      transition-duration: 0.5s
+      background: transparent
+
+      &:before
+        transform: rotateZ(45deg) scaleX(1.25) translate(6.5px, 6.5px)
+
+      &:after
+        transform: rotateZ(-45deg) scaleX(1.25) translate(6px, -6px)
+
+  &:hover
+    cursor: pointer
+
+
+
+
+
