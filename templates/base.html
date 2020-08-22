@@ -3,6 +3,7 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
+    <link rel="preload" href="{% static 'css/master.css' %}" as="style">
     <link rel="stylesheet" href="{% static 'css/master.css' %}">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,9 +13,9 @@
 </head>
 <body>
 <container>
-      <div class="menu btn12" data-menu="12">
+    <div class="menu btn12" data-menu="12">
         <div class="icon"></div>
-      </div>
+    </div>
     <header>
         <a href="{% url 'main' %}">
             <svg width="101" height="100" viewBox="0 0 101 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,14 +53,19 @@
             </svg>
         </a>
         <nav id="navigation">
-            <a href="" {% if request.path == url %}class="active"{% endif %}>Интерактивное ТВ</a>
+            <a href="{% url 'interactive-tv' %}" {% url 'interactive-tv' as url %}
+               {% if request.path == url %}class="active"{% endif %}>Интерактивное ТВ</a>
 
-            <a  {% url 'nav' as url %} href="{% url 'nav' %}" {% if request.path == url %}class="active"{% endif %}>Наши
-                ТВ приставки</a>
-            <a href="">Подключение и абонементы</a>
-            <a href="">ТВ каналы</a>
-            <a href="">Связь с нами</a>
-            <a href="">FAQ</a>
+            <a href="{% url 'tv-boxes' %}" {% url 'tv-boxes' as url %}
+               {% if request.path == url %}class="active"{% endif %}>Наши ТВ приставки</a>
+            <a href="{% url 'connect' %}" {% url 'connect' as url %}
+               {% if request.path == url %}class="active"{% endif %}>Подключение и абонементы</a>
+            <a href="{% url 'channels' %}" {% url 'channels' as url %}
+               {% if request.path == url %}class="active"{% endif %}>ТВ каналы</a>
+            <a href="{% url 'contact' %}" {% url 'contact' as url %}
+               {% if request.path == url %}class="active"{% endif %}>Связь с нами</a>
+            <a href="{% url 'faq' %}" {% url 'faq' as url %}
+               {% if request.path == url %}class="active"{% endif %}>FAQ</a>
 
         </nav>
     </header>
@@ -80,16 +86,21 @@
         </div>
         <footer>
 
-            <span>ТВ&nbsp;ЗНАК.&nbsp;2018&nbsp;-&nbsp;2020.</span>
+            <span>ТВ&nbsp;ЗНАК.&nbsp;2018&nbsp;-&nbsp;{% now 'Y' %}.</span>
             <nav>
-                <a href="" {% if request.path == url %}class="active"{% endif %}>Интерактивное ТВ</a>
+                <a href="{% url 'interactive-tv' %}" {% url 'interactive-tv' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>Интерактивное ТВ</a>
 
-                <a  {% url 'nav' as url %} href="{% url 'nav' %}" {% if request.path == url %}class="active"{% endif %}>Наши
-                    ТВ приставки</a>
-                <a href="">Подключение и абонементы</a>
-                <a href="">ТВ каналы</a>
-                <a href="">Связь с нами</a>
-                <a href="">FAQ</a>
+                <a href="{% url 'tv-boxes' %}" {% url 'tv-boxes' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>Наши ТВ приставки</a>
+                <a href="{% url 'connect' %}" {% url 'connect' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>Подключение и абонементы</a>
+                <a href="{% url 'channels' %}" {% url 'channels' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>ТВ каналы</a>
+                <a href="{% url 'contact' %}" {% url 'contact' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>Связь с нами</a>
+                <a href="{% url 'faq' %}" {% url 'faq' as url %}
+                   {% if request.path == url %}class="active"{% endif %}>FAQ</a>
             </nav>
         </footer>
 

@@ -15,10 +15,18 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
+from django.template.backends import django
 from django.urls import path, include
-from django.conf.urls import static
+from django.conf.urls import static, url
+import django.views.defaults
+
+
+def custom_page_not_found(request):
+    return django.views.defaults.page_not_found(request, None)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls'))
+    path('', include('main.urls')),
+    url(r'^404/$', django.views.defaults.page_not_found, ),
 ]

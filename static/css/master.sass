@@ -1,9 +1,99 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,500&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap')
 *
   box-sizeng: border-box
 
 $red: #FF0000
+
+$dark: red
+$light: #000
+$color: red
+
+@mixin h1($size)
+  font-family: Montserrat
+  font-weight: 700
+  font-size: $size
+  line-height: 100%
+  margin-top: 0
+  z-index: 2
+
+@mixin a_button($size)
+  display: inline-block
+  font-family: Montserrat
+  font-size: $size
+  line-height: 135%
+  color: red
+  font-weight: 600
+  padding: 6px 13px
+  background: #FFCC33
+  margin: 40px 0
+
+
+@mixin p($size, $font)
+  font-family: $font
+  font-style: normal
+  font-weight: 500
+  font-size: $size
+  line-height: 135%
+  z-index: 2
+  span
+    text-transform: uppercase
+    color: #FFCC33
+
+@mixin btn($right, $top)
+  display: none
+  @include _979
+    transform-style: preserve-3d
+    display: block
+    position: fixed
+    width: 60px
+    height: 60px
+    top: $top
+    right: $right
+    transition-duration: 0.5s
+    user-focus-pointer: none
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+    z-index: 110
+
+@mixin icon($height, $width)
+  transition-duration: 0.5s
+  position: absolute
+  height: $height
+  width: $width
+  top: 30px
+  background-color: $dark
+
+
+@mixin icon-before($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: $dark
+  content: ""
+  top: $top
+
+
+@mixin icon-after($height, $width, $top)
+  transition-duration: 0.5s
+  position: absolute
+  width: $width
+  height: $height
+  background-color: $dark
+  content: ""
+  top: $top
+
+
+@mixin icon-circle($height, $width)
+  transition-duration: 0.5s
+  position: absolute
+  height: $height
+  width: $width
+  top: 2px
+  border-radius: 100%
+  background: transparent
+  border: 4px solid black
+  left: -15px
 
 
 @mixin _1440
@@ -63,7 +153,6 @@ html, body
 
 container
   width: 80vw
-  overflow-x: hidden
   padding: 30px 0 0
   @include _1440
     width: 90vw
@@ -71,6 +160,7 @@ container
   @include _1200
   @include _480
     margin-top: 50px
+  font-family: Montserrat
 
 
 a, p, span, div
@@ -78,6 +168,7 @@ a, p, span, div
   font-weight: 600
   font-size: 16px
   line-height: 22px
+  font-family: Montserrat
 
 header, footer
   display: grid
@@ -87,10 +178,13 @@ header, footer
     grid-template-columns: 101px 1fr
   @include _1200
     grid-template-columns: 20px 1fr
+
   svg
     @include _480
       max-width: 50px
       margin-left: 15px
+      max-height: 50px
+
   span
     font-family: Roboto Mono
     font-size: 18px
@@ -99,6 +193,7 @@ header, footer
 
   nav
     justify-self: end
+
     @include _979
       display: none
 
@@ -111,6 +206,7 @@ header, footer
       margin-left: 25px
 
       &.active
+        color: #FFCC33
 
       @include _1440
         margin-left: 10px
@@ -126,6 +222,7 @@ header
     background: #000
     padding: 0
     z-index: 99
+
 #navigation
   @include _979
     box-sizing: border-box
@@ -147,6 +244,7 @@ header
       a
         font-size: 18px
         margin: 5px 0 5px 20px
+        line-height: 140%
     &.open
       right: 0
       @include _480
@@ -193,17 +291,19 @@ section.main-page-screen
     button
       background: $red
       font-weight: 600
-      font-size: 36px
-      line-height: 44px
+      font-size: 32px
+      line-height: 135%
       color: white
       text-decoration: none
       border: none
       padding: 6px 13px
       cursor: pointer
       transition: .3s
+      font-family: Montserrat
+
       @include _480
-        font-size: 28px
-        line-height: 32px
+        font-size: 24px
+        line-height: 26px
         text-align: center
         align-self: center
         width: 60%
@@ -220,7 +320,8 @@ section.main-page-screen
 
   @include _979
     grid-template-columns: 1fr
-
+    @include _480
+      height: 80vh
 
   img
     justify-self: end
@@ -256,75 +357,24 @@ footer
   padding-bottom: 65px
   @include _1440
     padding-bottom: 30px
-$dark: red
-$light: #000
-$color: red
-
-@mixin btn($right, $top)
-  display: none
-  @include _979
-    display: block
-    position: fixed
-    width: 60px
-    height: 60px
-    top: $top
-    background: #000
-
-    right: $right
-    transition-duration: 0.5s
-    user-focus-pointer: none
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-    z-index: 110
-
-@mixin icon($height, $width)
-  transition-duration: 0.5s
-  position: absolute
-  height: $height
-  width: $width
-  top: 30px
-  background-color: $dark
-
-
-@mixin icon-before($height, $width, $top)
-  transition-duration: 0.5s
-  position: absolute
-  width: $width
-  height: $height
-  background-color: $dark
-  content: ""
-  top: $top
-
-
-@mixin icon-after($height, $width, $top)
-  transition-duration: 0.5s
-  position: absolute
-  width: $width
-  height: $height
-  background-color: $dark
-  content: ""
-  top: $top
-
-
-@mixin icon-circle($height, $width)
-  transition-duration: 0.5s
-  position: absolute
-  height: $height
-  width: $width
-  top: 2px
-  border-radius: 100%
-  background: transparent
-  border: 4px solid black
-  left: -15px
-
 
 .btn12
   @include btn(10px, 40px)
+
   @include _480
-    @include btn(0px, 20px)
-  @include _375
-    @include btn(-10px, 20px)
-  @include _320
-    @include btn(-10px, 20px)
+    @include btn(-10px, -5px)
+
+  &:after
+    display: block
+    width: 40px
+    height: 40px
+    content: ''
+    background: black
+    z-index: 0
+    transform: translateZ(-1px)
+    position: absolute
+    top: 13px
+    right: 28px
 
   .icon
     @include icon(4px, 30px)
@@ -350,6 +400,415 @@ $color: red
     cursor: pointer
 
 
+section.interective
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: start
+  margin: 50px 0
+  grid-gap: 20px
+  @include _979
+    grid-template-columns: 1fr
+
+  img
+    max-width: 650px
+    justify-self: end
+    @include _1440
+      max-width: 90%
+    @include _979
+      max-width: 100%
+      width: 100%
+
+  .info-block
+    transform-style: preserve-3d
+    position: relative
+
+    svg
+      position: absolute
+      right: -40px
+      top: -10%
+      transform: translateZ(-10px)
+      @include _979
+        right: 0
+        max-width: 60%
+      @include _480
+        max-width: 90%
+        opacity: .8
+
+    h1
+      ransform: translateZ(10px)
+      @include h1(64px)
+      @include _1440
+        @include h1(52px)
+      @include _600
+        @include h1(44px)
+      @include _480
+        @include h1(32px)
+      @include _375
+        @include h1(28px)
+
+    p
+      @include p(16px, Roboto Mono)
+      @include _1200
+        @include p(14px, Roboto Mono)
+      @include _600
+        @include p(13px, Roboto Mono)
+
+    a.more-info
+      @include a_button(28px)
+      @include _480
+        @include a_button(24px)
+      @include _375
+        @include a_button(18px)
+
+.tv-box
+  margin-top: 50px
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-gap: 50px
+  grid-row-gap: 100px
+  justify-items: start
+  position: relative
+  transform-style: preserve-3d
+  align-items: start
+  @include _1200
+    grid-gap: 20px
+    grid-row-gap: 30px
+  @include _979
+    grid-template-columns: 1fr
+
+  svg
+    position: absolute
+    right: -15%
+    top: -20%
+    width: 35%
+    pointer-events: none
+    @include _1200
+      width: 100%
+      top: -10%
+      transform: translateZ(-1px)
+      opacity: .3
+    @include _480
+      width: 120%
+      right: -20%
+      top: -20%
+
+  h1
+    @include h1(64px)
+    @include _1200
+      @include h1(42px)
+
+  h2
+    @include h1(48px)
+    @include _1200
+      @include h1(36px)
+    @include _480
+      @include h1(26px)
+
+  p
+    @include p(16px, Roboto Mono)
+    @include _1200
+      @include p(14px, Roboto Mono)
+
+  a.more-info
+    color: white
+    font-size: 16px
+    font-weight: 500
+    align-self: end
+    font-family: Roboto Mono
+    transition: .3s
+    text-decoration: underline
+
+    &:hover
+      color: #FFCC33
+
+section.box-grid
+  display: grid
+  margin: 50px 0
+  position: relative
+  grid-gap: 50px
+  transform-style: preserve-3d
+  grid-template-columns: repeat(4, 1fr)
+  @include _1200
+    grid-template-columns: 1fr 1fr
+  @include _480
+    grid-template-columns: 1fr
+
+  svg
+    pointer-events: none
+    position: absolute
+    top: -30%
+    right: -35%
+    transform-style: preserve-3d
+    max-width: 50%
+    @include _1200
+      max-width: 100%
+      transform: translateZ(-1px)
+      opacity: .3
+    @include _480
+      max-width: 200%
+      width: 150%
+      right: -50%
+      top: -20%
+
+  .box
+    h3
+      @include h1(36px)
+      @include _979
+        @include h1(26px)
+
+    span.list
+      @include p(13px, Roboto Mono)
+      display: inline-block
+      margin: 5px 0
+      @include _979
+        @include p(12px, Roboto Mono)
+        margin: 3px 0
+
+    small
+      font-size: 12px
+      color: red
+
+    .img
+      img
+        width: 100%
+      position: relative
+
+      a.form
+        position: absolute
+        top: 0
+
+        @include a_button(13px)
+        margin: 0
+        background: red
+        color: white
+        transition: .3s
+
+        &:hover
+          background: #FFCC33
+          color: red
+
+.pnf
+  @include h1(64px)
+
+  margin: 20vh 0px
+  @include _979
+    @include h1(26px)
+    display: grid
+    justify-self: center
+    align-self: center
+    align-content: center
+    margin: 0
+    text-align: center
+    height: 40vh
+
+section.connect
+  display: grid
+  grid-template-columns: 1fr 1fr
+  align-items: start
+  margin: 50px 0
+  grid-gap: 20px
+  @include _979
+    grid-template-columns: 1fr
+  img
+    max-width: 650px
+    justify-self: end
+    @include _1440
+      max-width: 90%
+    @include _979
+      max-width: 100%
+      width: 100%
+      margin-top: 50px
+  svg
+    position: absolute
+    left: -20%
+    top: 10%
+    @include _1440
+      left: -30%
+      opacity: .4
+      transform: translateZ(-1px)
+    @include _979
+
+      opacity: .3
+    @include _480
+      left: -30%
+      max-width: 100%
+  .info-block
+    h1
+      @include h1(48px)
+      line-height: 150%
+      @include _1200
+        @include h1(36px)
+      @include _480
+        @include h1(32px)
+        line-height: 140%
+    .list
+      display: grid
+      grid-template-columns: 20px auto
+      width: 100%
+      grid-column-gap: 65px
+      margin-bottom: 10px
+      transition: .3s
+      align-items: center
+      small
+        @include h1(72px)
+        color: red
+      p
+        @include p(24px, Montserrat)
+      &:hover
+        cursor: default
+        p, small
+          color: #FFCC33
 
 
+section.subs
+  position: relative
+  margin-bottom: 50px
+  svg
+    position: absolute
+    top: -25%
+    right: -30%
+    @include _979
+      transform: translateZ(-1px)
+      opacity: .3
+  h1
+    @include h1(48px)
+    @include _768
+      @include h1(36px)
 
+  .subs-grid
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    grid-gap: 100px
+    @include _979
+      grid-template-columns: 1fr
+      grid-gap: 50px
+    .sub
+      display: grid
+      justify-items: stretch
+      img
+        background: red
+        padding: 10%
+        transition: .3s
+        max-width: 80%
+        &:hover
+          background: darken(red,7)
+    .row
+      margin: 20px 0
+      display: grid
+      align-items: center
+      grid-template-columns: 1fr 1fr
+      span
+        @include h1(32px)
+      price
+        @include a_button(32px)
+        display: inline
+        font-weight: 700
+        justify-self: end
+        margin: 0
+        line-height: 32px
+        text-align: center
+    .form
+      @include a_button(13px)
+      @include _768
+        @include a_button(24px)
+        width: 90%
+        text-align: center
+        justify-self: center
+      margin: 0
+      background: red
+      color: white
+      transition: .3s
+      justify-self: start
+      &:hover
+        background: #FFCC33
+        color: red
+
+
+section.contact
+  margin: 150px 0
+  display: grid
+  grid-gap: 50px
+  grid-template-columns: 1fr 2fr
+  @include _1200
+    grid-template-columns: 1fr
+  .links
+    h1
+      @include h1(64px)
+      font-weight: 900
+      @include _1440
+        @include h1(54px)
+      @include _480
+        @include h1(36px)
+    span
+      @include p(16px, Roboto Mono)
+      display: inline-block
+      width: 100%
+      opacity: .8
+      display: inline-block
+      margin-bottom: 10px
+      @include _1440
+        margin-bottom: 5px
+        @include p(14px, Roboto Mono)
+      @include _480
+        margin-bottom: 2px
+        @include p(12px, Roboto Mono)
+    a
+      @include h1(48px)
+      color: white
+      display: inline-block
+      font-weight: 700
+      margin-bottom: 40px
+      @include _1440
+        @include h1(36px)
+      @include _480
+        @include h1(26px)
+        margin-bottom: 20px
+  .send
+    padding-top: 50px
+    margin-left: 150px
+    @include _1200
+      margin-left: 0
+    @include _480
+      padding-top: 20px
+    span
+      width: 100%
+      display: inline-block
+      @include h1(48px)
+      @include _1440
+        @include h1(36px)
+      @include _480
+        @include h1(36px)
+        display: inline-block
+        margin-bottom: 50px
+    textarea
+      margin-top: 50px
+      background: transparent
+      border: none
+      border-bottom: solid 1px gray
+      width: 100%
+      height: 1em
+      overflow-x: hidden
+      resize: vertical
+      &::-webkit-scrollbar
+        background: transparent
+
+      padding-bottom: 10px
+      @include p(18px, Roboto Mono)
+      color: #FFCC33
+      font-weight: 300
+      @include _480
+        @include p(14px, Roboto Mono)
+        height: 5em
+
+        margin-top: 50px
+      &:focus
+        outline: none
+      &::placeholder
+        color: white
+        opacity: .3
+        font-weight: 400
+    a
+      @include a_button(18px)
+
+      display: inline-block
+      float: right

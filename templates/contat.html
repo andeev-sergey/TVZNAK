@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+    {% url 'contact' as url %}{% if request.path != url %}
+
+
+<h1 class="pnf">404 Страница не найдена</h1>
+
+
+    {% endif %}
+    <section class="contact">
+        <div class="links">
+            <h1>Связь с нами</h1>
+            <span>Телефон</span>
+            <a href="tel:+32488333003">+32 488 33 30 03</a>
+            <span>Телефон</span>
+            <a href="mailto:info@tvznak.eu">info@tvznak.eu</a>
+        </div>
+    <div class="send">
+        <span>Отправить нам письмо</span>
+        <textarea placeholder="У меня пропал один из телеканалов!!! Что делать?????"></textarea>
+        <a href="">Отправить</a>
+    </div>
+    </section>
+{% endblock %}
