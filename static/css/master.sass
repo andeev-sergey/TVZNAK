@@ -8,6 +8,7 @@ $red: #FF0000
 $dark: red
 $light: #000
 $color: red
+$white: #FCFCFCFC
 
 @mixin h1($size)
   font-family: Montserrat
@@ -16,6 +17,8 @@ $color: red
   line-height: 100%
   margin-top: 0
   z-index: 2
+  transform-style: preserve-3d
+  color: $white
 
 @mixin a_button($size)
   display: inline-block
@@ -26,6 +29,7 @@ $color: red
   font-weight: 600
   padding: 6px 13px
   background: #FFCC33
+  transform-style: preserve-3d
   margin: 40px 0
 
 
@@ -36,6 +40,7 @@ $color: red
   font-size: $size
   line-height: 135%
   z-index: 2
+  color: $white
   span
     text-transform: uppercase
     color: #FFCC33
@@ -96,6 +101,10 @@ $color: red
   left: -15px
 
 
+@mixin _1600
+  @media (max-width: 1600px)
+    @content
+
 @mixin _1440
   @media (max-width: 1440px)
     @content
@@ -144,8 +153,8 @@ html, body
   font-family: Montserrat
   margin: 0
   padding: 0
-  background: #000
-  color: white
+  background: #222
+  color: $white
   overflow-x: hidden
 
   &.fixed
@@ -154,13 +163,17 @@ html, body
 container
   width: 80vw
   padding: 30px 0 0
+  box-sizing: border-box
   @include _1440
     width: 90vw
     padding: 30px 0 0
   @include _1200
   @include _480
     margin-top: 50px
+    //overflow-x: hidden
   font-family: Montserrat
+  @media (min-width: 1920px)
+    width: 1600px
 
 
 a, p, span, div
@@ -174,6 +187,8 @@ header, footer
   display: grid
   grid-template-columns: 200px 1fr
   align-items: center
+
+  z-index: 10
   @include _1440
     grid-template-columns: 101px 1fr
   @include _1200
@@ -198,8 +213,9 @@ header, footer
       display: none
 
     a
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
       text-decoration: none
-      color: white
+      color: $white
       font-weight: 600
       font-size: 15px
       line-height: 17px
@@ -219,7 +235,7 @@ header
     top: 0
     right: 0
     width: 100%
-    background: #000
+    background: #111
     padding: 0
     z-index: 99
 
@@ -240,8 +256,9 @@ header
     @include _480
       width: 100vw
       right: -100%
-      padding: calc(50vh - 40%) 30px 30px
+      padding: calc(50vh - 70%) 30px 30px
       a
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
         font-size: 18px
         margin: 5px 0 5px 20px
         line-height: 140%
@@ -251,7 +268,7 @@ header
         right: 0
     a
       padding: 15px 0
-
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 
 section.main-page-screen
   display: grid
@@ -287,18 +304,22 @@ section.main-page-screen
         @include _375
           font-size: 28px
           line-height: 30px
-
+    a
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
     button
+
       background: $red
       font-weight: 600
       font-size: 32px
       line-height: 135%
-      color: white
+      color: $white
       text-decoration: none
       border: none
       padding: 6px 13px
       cursor: pointer
       transition: .3s
+      &:active, &:focus
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
       font-family: Montserrat
 
       @include _480
@@ -321,7 +342,7 @@ section.main-page-screen
   @include _979
     grid-template-columns: 1fr
     @include _480
-      height: 80vh
+      height: 60vh
 
   img
     justify-self: end
@@ -339,6 +360,7 @@ section.main-page-screen
   grid-gap: 70px
   justify-items: center
   align-items: center
+  transform-style: preserve-3d
   @include _1200
     grid-gap: 30px
   @include _768
@@ -354,7 +376,10 @@ section.main-page-screen
     max-width: 100%
 
 footer
+  z-index: 10
   padding-bottom: 65px
+  transform-style: preserve-3d
+  transform: translateZ(10px)
   @include _1440
     padding-bottom: 30px
 
@@ -369,7 +394,7 @@ footer
     width: 40px
     height: 40px
     content: ''
-    background: black
+    //background: black
     z-index: 0
     transform: translateZ(-1px)
     position: absolute
@@ -476,12 +501,19 @@ section.interective
   @include _979
     grid-template-columns: 1fr
 
+  &:not(.open)
+    .text
+      display: none
+      &:nth-child(1), &:nth-child(2)
+        display: block
   svg
     position: absolute
     right: -15%
     top: -20%
     width: 35%
     pointer-events: none
+
+
     @include _1200
       width: 100%
       top: -10%
@@ -490,10 +522,12 @@ section.interective
     @include _480
       width: 120%
       right: -20%
-      top: -20%
+      top: -200px
 
   h1
     @include h1(64px)
+    transform-style: preserve-3d
+    transform: translateZ(1px)
     @include _1200
       @include h1(42px)
 
@@ -510,7 +544,7 @@ section.interective
       @include p(14px, Roboto Mono)
 
   a.more-info
-    color: white
+    color: $white
     font-size: 16px
     font-weight: 500
     align-self: end
@@ -542,13 +576,13 @@ section.box-grid
     max-width: 50%
     @include _1200
       max-width: 100%
-      transform: translateZ(-1px)
+      transform: translateZ(-100)
       opacity: .3
     @include _480
       max-width: 200%
       width: 150%
       right: -50%
-      top: -20%
+      top:  50%
 
   .box
     h3
@@ -580,7 +614,7 @@ section.box-grid
         @include a_button(13px)
         margin: 0
         background: red
-        color: white
+        color: $white
         transition: .3s
 
         &:hover
@@ -605,6 +639,7 @@ section.connect
   display: grid
   grid-template-columns: 1fr 1fr
   align-items: start
+  transform-style: preserve-3d
   margin: 50px 0
   grid-gap: 20px
   @include _979
@@ -618,20 +653,24 @@ section.connect
       max-width: 100%
       width: 100%
       margin-top: 50px
+
   svg
     position: absolute
-    left: -20%
+    left: -32%
     top: 10%
+    @include  _1600
+      left: -40%
     @include _1440
       left: -30%
       opacity: .4
       transform: translateZ(-1px)
     @include _979
-
       opacity: .3
     @include _480
       left: -30%
-      max-width: 100%
+      max-width: 150%
+      top: -10%
+
   .info-block
     h1
       @include h1(48px)
@@ -641,6 +680,7 @@ section.connect
       @include _480
         @include h1(32px)
         line-height: 140%
+
     .list
       display: grid
       grid-template-columns: 20px auto
@@ -649,13 +689,17 @@ section.connect
       margin-bottom: 10px
       transition: .3s
       align-items: center
+
       small
         @include h1(72px)
         color: red
+
       p
         @include p(24px, Montserrat)
+
       &:hover
         cursor: default
+
         p, small
           color: #FFCC33
 
@@ -663,13 +707,24 @@ section.connect
 section.subs
   position: relative
   margin-bottom: 50px
+  transform-style: preserve-3d
+  transform: translateZ(1px)
+  z-index: 0
   svg
     position: absolute
     top: -25%
     right: -30%
-    @include _979
-      transform: translateZ(-1px)
+    transform-style: preserve-3d
+    transform: translateZ(-10px)
+    @include _1440
+      max-width: 60%
+      right: -35%
       opacity: .3
+    @include _979
+
+      opacity: .3
+      max-width: 100%
+
   h1
     @include h1(48px)
     @include _768
@@ -679,26 +734,34 @@ section.subs
     display: grid
     grid-template-columns: repeat(4, 1fr)
     grid-gap: 100px
+    transform-style: preserve-3d
+    transform: translateZ(1px)
     @include _979
       grid-template-columns: 1fr
       grid-gap: 50px
+
     .sub
       display: grid
       justify-items: stretch
+
       img
         background: red
         padding: 10%
         transition: .3s
         max-width: 80%
+
         &:hover
-          background: darken(red,7)
+          background: darken(red, 7)
+
     .row
       margin: 20px 0
       display: grid
       align-items: center
       grid-template-columns: 1fr 1fr
+
       span
         @include h1(32px)
+
       price
         @include a_button(32px)
         display: inline
@@ -707,6 +770,7 @@ section.subs
         margin: 0
         line-height: 32px
         text-align: center
+
     .form
       @include a_button(13px)
       @include _768
@@ -716,9 +780,10 @@ section.subs
         justify-self: center
       margin: 0
       background: red
-      color: white
+      color: $white
       transition: .3s
       justify-self: start
+
       &:hover
         background: #FFCC33
         color: red
@@ -731,6 +796,7 @@ section.contact
   grid-template-columns: 1fr 2fr
   @include _1200
     grid-template-columns: 1fr
+
   .links
     h1
       @include h1(64px)
@@ -739,6 +805,7 @@ section.contact
         @include h1(54px)
       @include _480
         @include h1(36px)
+
     span
       @include p(16px, Roboto Mono)
       display: inline-block
@@ -752,9 +819,10 @@ section.contact
       @include _480
         margin-bottom: 2px
         @include p(12px, Roboto Mono)
+
     a
       @include h1(48px)
-      color: white
+      color: $white
       display: inline-block
       font-weight: 700
       margin-bottom: 40px
@@ -763,6 +831,7 @@ section.contact
       @include _480
         @include h1(26px)
         margin-bottom: 20px
+
   .send
     padding-top: 50px
     margin-left: 150px
@@ -770,6 +839,7 @@ section.contact
       margin-left: 0
     @include _480
       padding-top: 20px
+
     span
       width: 100%
       display: inline-block
@@ -780,6 +850,7 @@ section.contact
         @include h1(36px)
         display: inline-block
         margin-bottom: 50px
+
     textarea
       margin-top: 50px
       background: transparent
@@ -789,6 +860,7 @@ section.contact
       height: 1em
       overflow-x: hidden
       resize: vertical
+
       &::-webkit-scrollbar
         background: transparent
 
@@ -801,14 +873,264 @@ section.contact
         height: 5em
 
         margin-top: 50px
+
       &:focus
         outline: none
+
       &::placeholder
-        color: white
+        color: $white
         opacity: .3
         font-weight: 400
+
     a
       @include a_button(18px)
 
       display: inline-block
       float: right
+
+section.channels
+  display: grid
+  grid-template-columns: 1fr 1fr
+  margin: 50px 0 100px
+  @include _1200
+    grid-template-columns: 2fr 1fr
+  @include _979
+    grid-template-columns: 1fr
+    padding-bottom: 100px
+  @include _480
+    padding-bottom: 0
+    margin-bottom: 0
+
+  h1
+    @include h1(64px)
+    color: $white
+    @include _1440
+      @include h1(54px)
+    @include _480
+      @include h1(36px)
+
+  p
+    @include p(16px, Roboto Mono)
+
+    .blue
+      color: #3875d7
+
+    .yello
+      color: #FFCC33
+    font-weight: 300
+    @include _600
+      @include p(14px, Roboto Mono)
+      line-height: 150%
+
+      margin-top: 50px
+
+.channels-grid
+  padding-top: 50px
+  display: grid
+  grid-template-columns: repeat(8, 1fr)
+  grid-gap: 32px
+  @include _979
+    grid-template-columns: repeat(4, 1fr)
+  @include _480
+    grid-template-columns: 1fr 1fr
+    grid-gap: 16px
+    grid-row-gap: 30px
+
+  .channel
+    display: grid
+
+    .img
+      background: white
+      padding: 10px 30px
+
+      img
+        width: 100%
+
+    .name
+      padding: 10px 0
+      width: 100%
+      text-align: center
+      background: #FFCC33
+      color: black
+      font-size: 16px
+
+.faq
+  position: relative
+  transform-style: preserve-3d
+  margin: 50px 20vw 50px 0
+  @include _979
+    margin: 50px 0
+
+  svg
+    transform: translateZ(-1px)
+    position: absolute
+    top: 10%
+    right: -70%
+    @include _979
+      opacity: .3
+      top: -5%
+
+  h1
+
+    @include h1(64px)
+    color: $white
+
+    @include _1440
+      @include h1(54px)
+    @include _480
+      @include h1(64px)
+
+    a
+      margin-left: 100px
+      color: $white
+      font-size: 16px
+      font-weight: 500
+      align-self: end
+      font-family: Roboto Mono
+      transition: .3s
+      text-decoration: underline
+      @include _480
+        white-space: nowrap
+        margin-left: 0
+        font-size: 10px
+
+      &:hover
+        color: #FFCC33
+
+  h2
+    @include h1(44px)
+    @include _979
+      @include h1(36px)
+    @include _480
+      @include h1(28px)
+      margin: 30px 0 10px
+    font-weight: 700
+    margin: 0
+    transition: .3s
+    line-height: 120%
+
+    &:hover
+      color: #FFCC33
+      cursor: default
+
+  p
+    @include p(15px, Roboto Mono)
+
+    @include _480
+      @include p(13px, Roboto Mono)
+
+    a
+      color: $white
+      transition: .3s
+      text-decoration: underline
+
+      &:hover
+        color: #FFCC33
+
+
+.overlay
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(#000, .6)
+  display: none
+  transition: .3s
+  justify-items: center
+  align-items: center
+  z-index: 99999
+
+  &.active
+    display: grid
+
+  @include _480
+    background: black
+
+  .modal
+    display: grid
+    position: relative
+    box-sizing: border-box
+    opacity: 0
+    transform: translateY(-100px)
+    transition: .8s
+    background: #000
+    border: 5px solid #FFCC33
+    padding: 40px 30px
+    width: 500px
+
+    span.wrong
+      display: none
+
+    &.wrong
+      span.wrong
+        display: inline
+
+        position: absolute
+        bottom: 50px
+        right: 30px
+        @include p(12px, Roboto Mono)
+        color: red
+        font-weight: 600
+
+    @include _480
+      width: calc(100vw - 6px)
+      height: calc(100vh - 10px)
+      align-content: center
+      padding: 30px 20px
+
+    h2
+      @include h1(24px)
+      font-weight: 700
+      margin: 0 0 20px
+      line-height: 130%
+      @include _375
+        @include h1(18px)
+
+    input
+      background: transparent
+      outline: none
+      border: none
+      color: $white
+      margin-bottom: 20px
+      @include p(14px, Roboto Mono)
+      padding-bottom: 5px
+      line-height: 130%
+      @include _375
+        @include p(13px, Roboto Mono)
+
+      &:focus, &:active
+        background: transparent
+      border-bottom: 1px solid rgba(white, .5)
+
+    a.send
+      @include a_button(14px)
+      display: inline-block
+      text-align: center
+      width: 100px
+      margin-bottom: 0
+      margin-top: 10px
+
+  svg
+    position: absolute
+    top: 15px
+    right: 15px
+    user-select: none
+    cursor: pointer
+
+.msg
+  display: none
+  position: fixed
+  text-align: center
+  @include p(32px, Roboto Mono)
+  width: 100%
+  color: rgba(#FFCC33, 0)
+  opacity: 0
+  transition: .3s
+  font-weight: 700
+  margin-top: 40vh
+
+  &.active
+    opacity: 1
+    display: inline-block
+    color: rgba(#FFCC33, 1)

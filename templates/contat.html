@@ -8,13 +8,18 @@
     {% endif %}
     <section class="contact">
         <div class="links">
-            <h1>Связь с нами</h1>
+            {% for contact in contacts %}
+             <h1>Связь с нами</h1>
             <span>Телефон</span>
-            <a href="tel:+32488333003">+32 488 33 30 03</a>
+            <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
             <span>Телефон</span>
-            <a href="mailto:info@tvznak.eu">info@tvznak.eu</a>
+            <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+            {% endfor %}
+
+
         </div>
     <div class="send">
+                 {% csrf_token %}
         <span>Отправить нам письмо</span>
         <textarea placeholder="У меня пропал один из телеканалов!!! Что делать?????"></textarea>
         <a href="">Отправить</a>

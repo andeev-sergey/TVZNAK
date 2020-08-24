@@ -12,6 +12,25 @@
     <title>TVZNAK</title>
 </head>
 <body>
+<div class="overlay">
+    <h3 class="msg">Заявка отпрвлена!<br>
+    Мы с вами свяжемся</h3>
+   {% csrf_token %}
+    <div class="modal">
+        <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.53564" y="28.2843" width="5" height="35" transform="rotate(-135 3.53564 28.2843)" fill="white"/>
+            <rect y="3.53553" width="5" height="35" transform="rotate(-45 0 3.53553)" fill="white"/>
+        </svg>
+        <h2>Как вас зовут?</h2>
+        <input class="name" type="text" placeholder="Имя Имя">
+        <h2>Ваш E-mail</h2>
+        <input class="email" placeholder="email@email.com" type="email">
+        <h2>Укажите выбранный вами тариф
+            и модель ТВ приставки:</h2>
+        <input type="text" placeholder="TVIP S-BOX v.410, тариф “Спутник” " class="items">
+        <a href="" class="send">Отправить!</a> <span class="wrong">Заполните форму!</span>
+    </div>
+</div>
 <container>
     <div class="menu btn12" data-menu="12">
         <div class="icon"></div>

@@ -16,6 +16,10 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('channels/', channels, name='channels'),
     path('faq/', faq, name='faq'),
+    path('contact/contact_us', event_request),
+    path('connect/request', buy),
+    path('tv-boxes/request', buy),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
