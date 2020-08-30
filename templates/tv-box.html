@@ -101,9 +101,10 @@
                 •	Wi-Fi	{{ box.wi_fi }}
                 </span>
                     {% endif %}
+                <br><a href="{% static 'sample.pdf' %}" target="_blank" class="more-info">Инструкция</a>
                 </div>
         {% endfor %}
 
     </section>
-
+    <img class="mobile-footer" src="{% static 'img/footer/ico_man.png' %}" alt="">
 {% endblock %}

@@ -86,9 +86,11 @@
             <a href="{% url 'faq' %}" {% url 'faq' as url %}
                {% if request.path == url %}class="active"{% endif %}>FAQ</a>
 
+
+
+
         </nav>
     </header>
-
     {% block content %}
 
     {% endblock %}

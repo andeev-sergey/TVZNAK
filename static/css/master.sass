@@ -286,7 +286,7 @@ section.main-page-screen
 
     h1
       font-weight: bold
-      font-size: 64px
+      font-size: 48px
       word-break: keep-all
       white-space: nowrap
       line-height: 70px
@@ -369,8 +369,7 @@ section.main-page-screen
   @include _600
     grid-gap: 50px
   @include _480
-    grid-template-columns: repeat(2, 1fr)
-    grid-gap: 60px
+    display: none
 
   img
     max-width: 100%
@@ -382,6 +381,12 @@ footer
   transform: translateZ(10px)
   @include _1440
     padding-bottom: 30px
+  @include _480
+    grid-template-columns: 1fr
+    span
+      width: 100%
+      text-align: center
+      color: #FFCC33
 
 .btn12
   @include btn(10px, 40px)
@@ -461,7 +466,7 @@ section.interective
 
     h1
       ransform: translateZ(10px)
-      @include h1(64px)
+      @include h1(48px)
       @include _1440
         @include h1(52px)
       @include _600
@@ -524,8 +529,9 @@ section.interective
       right: -20%
       top: -200px
 
+
   h1
-    @include h1(64px)
+    @include h1(48px)
     transform-style: preserve-3d
     transform: translateZ(1px)
     @include _1200
@@ -583,6 +589,7 @@ section.box-grid
       width: 150%
       right: -50%
       top:  50%
+      display: none
 
   .box
     h3
@@ -601,6 +608,17 @@ section.box-grid
     small
       font-size: 12px
       color: red
+
+    a.more-info
+      color: $white
+      font-size: 16px
+      font-weight: 500
+      align-self: end
+      font-family: Roboto Mono
+      transition: .3s
+      text-decoration: underline
+      &:hover
+        color: $red
 
     .img
       img
@@ -622,7 +640,7 @@ section.box-grid
           color: red
 
 .pnf
-  @include h1(64px)
+  @include h1(48px)
 
   margin: 20vh 0px
   @include _979
@@ -675,12 +693,19 @@ section.connect
     h1
       @include h1(48px)
       line-height: 150%
+      margin-bottom: 10px
       @include _1200
         @include h1(36px)
       @include _480
-        @include h1(32px)
+        @include h1(42px)
         line-height: 140%
 
+    h2
+      @include h1(36px)
+      @include _768
+        @include h1(24px)
+        line-height: 150%
+        text-align: center
     .list
       display: grid
       grid-template-columns: 20px auto
@@ -689,14 +714,20 @@ section.connect
       margin-bottom: 10px
       transition: .3s
       align-items: center
+      @include _480
+        p
+          margin: 0
 
       small
         @include h1(72px)
-        color: red
-
+        color: $red !important
+        @include _480
+          @include h1(62px)
       p
         @include p(24px, Montserrat)
-
+        @include p(24px, Montserrat)
+        @include _480
+          @include p(16px, Montserrat)
       &:hover
         cursor: default
 
@@ -799,10 +830,10 @@ section.contact
 
   .links
     h1
-      @include h1(64px)
+      @include h1(48px)
       font-weight: 900
       @include _1440
-        @include h1(54px)
+        @include h1(42px)
       @include _480
         @include h1(36px)
 
@@ -902,7 +933,7 @@ section.channels
     margin-bottom: 0
 
   h1
-    @include h1(64px)
+    @include h1(48px)
     color: $white
     @include _1440
       @include h1(54px)
@@ -953,7 +984,17 @@ section.channels
       background: #FFCC33
       color: black
       font-size: 16px
+  a.more-info
+    color: $white
+    font-size: 16px
+    font-weight: 500
+    align-self: end
+    font-family: Roboto Mono
+    transition: .3s
+    text-decoration: underline
 
+    &:hover
+      color: $red
 .faq
   position: relative
   transform-style: preserve-3d
@@ -972,13 +1013,13 @@ section.channels
 
   h1
 
-    @include h1(64px)
+    @include h1(48px)
     color: $white
 
     @include _1440
       @include h1(54px)
     @include _480
-      @include h1(64px)
+      @include h1(48px)
 
     a
       margin-left: 100px
@@ -1134,3 +1175,12 @@ section.channels
     opacity: 1
     display: inline-block
     color: rgba(#FFCC33, 1)
+
+
+img.mobile-footer
+  display: none
+  @include _480
+    display: block
+    max-width: 25vw
+    margin: 20px auto
+    justify-self: center

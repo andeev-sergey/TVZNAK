@@ -142,7 +142,7 @@ section.main-page-screen {
         transform: translateY(30px) translateX(20px); } }
   section.main-page-screen .info-block h1 {
     font-weight: bold;
-    font-size: 64px;
+    font-size: 48px;
     word-break: keep-all;
     white-space: nowrap;
     line-height: 70px; }
@@ -232,8 +232,7 @@ section.main-page-screen {
       grid-gap: 50px; } }
   @media (max-width: 480px) {
     .channels {
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 60px; } }
+      display: none; } }
   .channels img {
     max-width: 100%; }
 
@@ -245,6 +244,13 @@ footer {
   @media (max-width: 1440px) {
     footer {
       padding-bottom: 30px; } }
+  @media (max-width: 480px) {
+    footer {
+      grid-template-columns: 1fr; }
+      footer span {
+        width: 100%;
+        text-align: center;
+        color: #FFCC33; } }
 
 .btn12 {
   display: none; }
@@ -360,7 +366,7 @@ section.interective {
       ransform: translateZ(10px);
       font-family: Montserrat;
       font-weight: 700;
-      font-size: 64px;
+      font-size: 48px;
       line-height: 100%;
       margin-top: 0;
       z-index: 2;
@@ -518,7 +524,7 @@ section.interective {
   .tv-box h1 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 100%;
     margin-top: 0;
     z-index: 2;
@@ -629,7 +635,8 @@ section.box-grid {
         max-width: 200%;
         width: 150%;
         right: -50%;
-        top: 50%; } }
+        top: 50%;
+        display: none; } }
   section.box-grid .box h3 {
     font-family: Montserrat;
     font-weight: 700;
@@ -678,6 +685,16 @@ section.box-grid {
   section.box-grid .box small {
     font-size: 12px;
     color: red; }
+  section.box-grid .box a.more-info {
+    color: #FCFCFCFC;
+    font-size: 16px;
+    font-weight: 500;
+    align-self: end;
+    font-family: Roboto Mono;
+    transition: 0.3s;
+    text-decoration: underline; }
+    section.box-grid .box a.more-info:hover {
+      color: #FF0000; }
   section.box-grid .box .img {
     position: relative; }
     section.box-grid .box .img img {
@@ -706,7 +723,7 @@ section.box-grid {
 .pnf {
   font-family: Montserrat;
   font-weight: 700;
-  font-size: 64px;
+  font-size: 48px;
   line-height: 100%;
   margin-top: 0;
   z-index: 2;
@@ -781,7 +798,8 @@ section.connect {
     z-index: 2;
     transform-style: preserve-3d;
     color: #FCFCFCFC;
-    line-height: 150%; }
+    line-height: 150%;
+    margin-bottom: 10px; }
     @media (max-width: 1200px) {
       section.connect .info-block h1 {
         font-family: Montserrat;
@@ -796,13 +814,34 @@ section.connect {
       section.connect .info-block h1 {
         font-family: Montserrat;
         font-weight: 700;
-        font-size: 32px;
+        font-size: 42px;
         line-height: 100%;
         margin-top: 0;
         z-index: 2;
         transform-style: preserve-3d;
         color: #FCFCFCFC;
         line-height: 140%; } }
+  section.connect .info-block h2 {
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 100%;
+    margin-top: 0;
+    z-index: 2;
+    transform-style: preserve-3d;
+    color: #FCFCFCFC; }
+    @media (max-width: 768px) {
+      section.connect .info-block h2 {
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 100%;
+        margin-top: 0;
+        z-index: 2;
+        transform-style: preserve-3d;
+        color: #FCFCFCFC;
+        line-height: 150%;
+        text-align: center; } }
   section.connect .info-block .list {
     display: grid;
     grid-template-columns: 20px auto;
@@ -811,6 +850,9 @@ section.connect {
     margin-bottom: 10px;
     transition: 0.3s;
     align-items: center; }
+    @media (max-width: 480px) {
+      section.connect .info-block .list p {
+        margin: 0; } }
     section.connect .info-block .list small {
       font-family: Montserrat;
       font-weight: 700;
@@ -820,8 +862,25 @@ section.connect {
       z-index: 2;
       transform-style: preserve-3d;
       color: #FCFCFCFC;
-      color: red; }
+      color: #FF0000 !important; }
+      @media (max-width: 480px) {
+        section.connect .info-block .list small {
+          font-family: Montserrat;
+          font-weight: 700;
+          font-size: 62px;
+          line-height: 100%;
+          margin-top: 0;
+          z-index: 2;
+          transform-style: preserve-3d;
+          color: #FCFCFCFC; } }
     section.connect .info-block .list p {
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 135%;
+      z-index: 2;
+      color: #FCFCFCFC;
       font-family: Montserrat;
       font-style: normal;
       font-weight: 500;
@@ -832,6 +891,21 @@ section.connect {
       section.connect .info-block .list p span {
         text-transform: uppercase;
         color: #FFCC33; }
+      section.connect .info-block .list p span {
+        text-transform: uppercase;
+        color: #FFCC33; }
+      @media (max-width: 480px) {
+        section.connect .info-block .list p {
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 135%;
+          z-index: 2;
+          color: #FCFCFCFC; }
+          section.connect .info-block .list p span {
+            text-transform: uppercase;
+            color: #FFCC33; } }
     section.connect .info-block .list:hover {
       cursor: default; }
       section.connect .info-block .list:hover p, section.connect .info-block .list:hover small {
@@ -974,7 +1048,7 @@ section.contact {
   section.contact .links h1 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 100%;
     margin-top: 0;
     z-index: 2;
@@ -985,7 +1059,7 @@ section.contact {
       section.contact .links h1 {
         font-family: Montserrat;
         font-weight: 700;
-        font-size: 54px;
+        font-size: 42px;
         line-height: 100%;
         margin-top: 0;
         z-index: 2;
@@ -1195,7 +1269,7 @@ section.channels {
   section.channels h1 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 100%;
     margin-top: 0;
     z-index: 2;
@@ -1280,6 +1354,16 @@ section.channels {
       background: #FFCC33;
       color: black;
       font-size: 16px; }
+  .channels-grid a.more-info {
+    color: #FCFCFCFC;
+    font-size: 16px;
+    font-weight: 500;
+    align-self: end;
+    font-family: Roboto Mono;
+    transition: 0.3s;
+    text-decoration: underline; }
+    .channels-grid a.more-info:hover {
+      color: #FF0000; }
 
 .faq {
   position: relative;
@@ -1300,7 +1384,7 @@ section.channels {
   .faq h1 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 64px;
+    font-size: 48px;
     line-height: 100%;
     margin-top: 0;
     z-index: 2;
@@ -1321,7 +1405,7 @@ section.channels {
       .faq h1 {
         font-family: Montserrat;
         font-weight: 700;
-        font-size: 64px;
+        font-size: 48px;
         line-height: 100%;
         margin-top: 0;
         z-index: 2;
@@ -1565,5 +1649,14 @@ section.channels {
     opacity: 1;
     display: inline-block;
     color: #ffcc33; }
+
+img.mobile-footer {
+  display: none; }
+  @media (max-width: 480px) {
+    img.mobile-footer {
+      display: block;
+      max-width: 25vw;
+      margin: 20px auto;
+      justify-self: center; } }
 
 /*# sourceMappingURL=master.css.map */
