@@ -12,10 +12,32 @@
     <title>TVZNAK</title>
 </head>
 <body>
+<div class="cookie" style="
+        position: fixed;
+        padding: 10px 20px;
+        bottom: -100%;
+        right: 2px;
+        line-height: 14px;
+        vertical-align: center;
+        box-sizing: border-box;
+        width: 320px;
+        height: auto;
+        z-index: 1000;
+        background: #222;
+        opacity: 0;
+        border: 5px solid #FFCC33;
+" id="cookie">
+    <span style="
+    float: right; cursor: pointer; user-select: none;
+padding: 10px; transform: translateY(-20px) translateX(25px);"
+    >x</span> <p style="font-size: 14px;" >Продолжая использовать наш сайт, вы даете
+    согласие на обработку файлов cookie, которые обеспечивают правильную работу сайта. Благодаря им мы улучшаем сайт,
+    обслуживание и товары.</p>
+</div>
 <div class="overlay">
     <h3 class="msg">Заявка отпрвлена!<br>
-    Мы с вами свяжемся</h3>
-   {% csrf_token %}
+        Мы с вами свяжемся</h3>
+    {% csrf_token %}
     <div class="modal">
         <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="3.53564" y="28.2843" width="5" height="35" transform="rotate(-135 3.53564 28.2843)" fill="white"/>
@@ -27,7 +49,7 @@
         <input class="email" placeholder="email@email.com" type="email">
         <h2>Укажите выбранный вами тариф
             и модель ТВ приставки:</h2>
-        <input type="text" placeholder="TVIP S-BOX v.410, тариф “Спутник” " class="items">
+        <input type="text" placeholder="TVIP S-BOX" class="items">
         <a href="" class="send">Отправить!</a> <span class="wrong">Заполните форму!</span>
     </div>
 </div>
@@ -84,9 +106,7 @@
             <a href="{% url 'contact' %}" {% url 'contact' as url %}
                {% if request.path == url %}class="active"{% endif %}>Связь с нами</a>
             <a href="{% url 'faq' %}" {% url 'faq' as url %}
-               {% if request.path == url %}class="active"{% endif %}>FAQ</a>
-
-
+               {% if request.path == url %}class="active"{% endif %}>Вопросы</a>
 
 
         </nav>
@@ -121,7 +141,7 @@
                 <a href="{% url 'contact' %}" {% url 'contact' as url %}
                    {% if request.path == url %}class="active"{% endif %}>Связь с нами</a>
                 <a href="{% url 'faq' %}" {% url 'faq' as url %}
-                   {% if request.path == url %}class="active"{% endif %}>FAQ</a>
+                   {% if request.path == url %}class="active"{% endif %}>Вопросы</a>
             </nav>
         </footer>
 
@@ -129,6 +149,7 @@
 
     {% endif %}
 </container>
+
 </body>
 <script src="{% static 'js/jq.js' %}" charset="utf-8"></script>
 <script src="{% static 'js/master.js' %}" charset="utf-8"></script>

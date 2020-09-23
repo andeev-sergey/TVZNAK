@@ -93,4 +93,17 @@ $('.tv-box .more-info').click(function (e) {
     e.preventDefault();
     $('.tv-box').toggleClass('open');
 
-})
+});
+
+if (localStorage.getItem('pressed')) {
+
+} else {
+    let some;
+    some = $("#cookie");
+    some.animate({opacity: '1', bottom: '0'}, {duration: 1000});
+    some.children('span').click(function () {
+        some.animate({opacity: '0', bottom: '-100%'}, {duration: 1000});
+        localStorage.setItem('pressed', 'true');
+    });
+}
+

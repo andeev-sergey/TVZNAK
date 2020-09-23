@@ -609,9 +609,9 @@ section.box-grid {
   display: grid;
   margin: 50px 0;
   position: relative;
-  grid-gap: 50px;
+  grid-column-gap: 100px;
   transform-style: preserve-3d;
-  grid-template-columns: repeat(4, 1fr); }
+  grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 1200px) {
     section.box-grid {
       grid-template-columns: 1fr 1fr; } }
@@ -953,8 +953,8 @@ section.subs {
         color: #FCFCFCFC; } }
   section.subs .subs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 100px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 150px;
     transform-style: preserve-3d;
     transform: translateZ(1px); }
     @media (max-width: 979px) {
@@ -1045,6 +1045,9 @@ section.contact {
   @media (max-width: 1200px) {
     section.contact {
       grid-template-columns: 1fr; } }
+  @media (max-width: 768px) {
+    section.contact {
+      margin: 0; } }
   section.contact .links h1 {
     font-family: Montserrat;
     font-weight: 700;
@@ -1255,6 +1258,11 @@ section.channels {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 50px 0 100px; }
+  section.channels img {
+    max-width: 60%; }
+    @media (max-width: 768px) {
+      section.channels img {
+        max-width: 100%; } }
   @media (max-width: 1200px) {
     section.channels {
       grid-template-columns: 2fr 1fr; } }
@@ -1326,6 +1334,16 @@ section.channels {
         section.channels p span {
           text-transform: uppercase;
           color: #FFCC33; } }
+  section.channels a.more-info {
+    color: #FCFCFCFC;
+    font-size: 16px;
+    font-weight: 500;
+    align-self: end;
+    font-family: Roboto Mono;
+    transition: 0.3s;
+    text-decoration: underline; }
+    section.channels a.more-info:hover {
+      color: #FF0000; }
 
 .channels-grid {
   padding-top: 50px;
@@ -1412,7 +1430,6 @@ section.channels {
         transform-style: preserve-3d;
         color: #FCFCFCFC; } }
     .faq h1 a {
-      margin-left: 100px;
       color: #FCFCFCFC;
       font-size: 16px;
       font-weight: 500;
@@ -1430,7 +1447,7 @@ section.channels {
   .faq h2 {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 44px;
+    font-size: 28px;
     line-height: 100%;
     margin-top: 0;
     z-index: 2;
@@ -1444,7 +1461,7 @@ section.channels {
       .faq h2 {
         font-family: Montserrat;
         font-weight: 700;
-        font-size: 36px;
+        font-size: 24px;
         line-height: 100%;
         margin-top: 0;
         z-index: 2;
@@ -1660,3 +1677,4 @@ img.mobile-footer {
       justify-self: center; } }
 
 /*# sourceMappingURL=master.css.map */
+dw
